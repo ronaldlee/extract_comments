@@ -20,8 +20,17 @@ anotherFunction()
 
 //const testFolder = './datasets/spark';
 //const testFolder = './datasets/finagle';
-const testFolder = './../../datasets/kafka';
+const testFolder = './datasets/kafka';
 const fs = require('fs');
+
+const options = {
+  pattern: {
+    name: 'Scala',
+    nameMatchers: ['.scala'],
+    singleLineComment: [{ start: '//' }],
+    multiLineComment: [{ start: '/*', middle: '', end: '*/'}]
+  }
+}
 
 fs.readdir(testFolder, (err, files) => {
   files.forEach(file => {
@@ -32,6 +41,8 @@ fs.readdir(testFolder, (err, files) => {
             return;
         }
         var comments = require('multilang-extract-comments')(data)
+        //var comments = require('multilang-extract-comments')(data, options)
+        //var comments = require('multilang-extract-comments')(data, { filename: 'scala.scala'})
 
         const obj = {filename:filepath, data: comments}
 
