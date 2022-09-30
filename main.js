@@ -18,7 +18,9 @@ anotherFunction()
 //console.log(comments)
 
 
-const testFolder = './datasets/spark';
+//const testFolder = './datasets/spark';
+//const testFolder = './datasets/finagle';
+const testFolder = './../../datasets/kafka';
 const fs = require('fs');
 
 fs.readdir(testFolder, (err, files) => {
